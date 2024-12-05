@@ -1,0 +1,13 @@
+html {
+  head {
+    title "Title"
+    link rel="stylesheet" src="http://foo.bar"
+    script type="application/javascript" r#"
+      console.log("Loaded!");
+    "#
+  }
+  body {
+    h1 "Heading"
+    div id="container"
+  }
+}
