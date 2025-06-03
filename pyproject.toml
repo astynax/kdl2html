@@ -4,6 +4,6 @@ version = "0.1.0"
 description = "A PoC KDL to HTML converter"
 requires-python = ">=3.13"
 dependencies = [
-    "cuddle==1.0.6",
-    "htpy==24.10.1",
+    "cuddle",
+    "htpy",
 ]

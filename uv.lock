@@ -1,4 +1,5 @@
 version = 1
+revision = 1
 requires-python = ">=3.13"
 
 [[package]]
@@ -16,14 +17,14 @@ wheels = [
 
 [[package]]
 name = "htpy"
-version = "24.10.1"
+version = "25.6.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "markupsafe" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/14/13/489e52462d3ac4a09732052d9d23e65db835e808235d1079dcc20fd73a0b/htpy-24.10.1.tar.gz", hash = "sha256:e85b57d73e86b1ba7b01eb956cf8b8fa32d4cc1dcce4be7c6c17a35c66bd2d13", size = 280895 }
+sdist = { url = "https://files.pythonhosted.org/packages/b3/79/739bf6febc2ea394dda6307a3fb79dad4e35e94d1f3f970ff15092d4b56e/htpy-25.6.2.tar.gz", hash = "sha256:3f7332ef1d8020f965123cb36d34ae5bfa40109881297bdaec935f61761a2018", size = 286994 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/70/f5/4f90955c35bb4b44d5d2a1293b834a272c1c81d330aad4f49739e6d9f94c/htpy-24.10.1-py3-none-any.whl", hash = "sha256:c2824ab27116248dbc60dd8e4c7ca34593f323cee702e48f72b0e8b96378ddef", size = 12475 },
+    { url = "https://files.pythonhosted.org/packages/a6/d2/a273a8f0f0c68a6b0df312893426847cdf5b373f6e673561bda0a0c078ae/htpy-25.6.2-py3-none-any.whl", hash = "sha256:25be546ea71bd3bb6bd0c4a9c9f3cd10e6823bc010ab42dd79003d4aa8b556e1", size = 18829 },
 ]
 
 [[package]]
@@ -37,8 +38,8 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "cuddle", specifier = "==1.0.6" },
-    { name = "htpy", specifier = "==24.10.1" },
+    { name = "cuddle" },
+    { name = "htpy" },
 ]
 
 [[package]]
