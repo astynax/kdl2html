@@ -1,13 +1,23 @@
 html {
   head {
     title "Title"
-    link rel="stylesheet" src="http://foo.bar"
-    script type="application/javascript" r#"
-      console.log("Loaded!");
+    style r#"
+      .red { color: red; }
     "#
   }
   body {
     h1 "Heading"
-    div id="container"
+    div id="content" {
+      span "Hello"
+      _ " World" "!"
+    }
+    label {
+      input type="checkbox" checked=true
+      _ "TODO"
+    }
+
+    script type="application/javascript" r#"
+      content.firstChild.classList.toggle("red");
+    "#
   }
 }
