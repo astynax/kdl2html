@@ -6,14 +6,19 @@ html {
     "#
   }
   body {
-    h1 "Heading"
-    div id="content" {
+    h1.yellow "Heading"
+
+    #content {
       span "Hello"
       _ " World" "!"
     }
-    label {
-      input type="checkbox" checked=true
-      _ "TODO"
+
+    form method="POST" {
+      label {
+        input type="checkbox" checked=true
+        _ "TODO"
+      }
+      button type="submit"
     }
 
     script type="application/javascript" r#"

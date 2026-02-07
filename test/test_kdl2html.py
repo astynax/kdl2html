@@ -1,7 +1,8 @@
 import htpy as h
 import cuddle as c
 
-from kdl2html import htmlize
+from kdl2html import htmlize, TAG
+import pytest
 
 
 def doc(source: str) -> str:
@@ -42,3 +43,33 @@ div class="red" {
 
 def test_text_node_argument_joining():
     assert doc('_ "foo" "" "bar"') == doc('_ "foobar"')
+
+
+def test_tag_pattern():
+    def m(text: str) -> tuple[str | None, str, str | None, str]:
+        return TAG.fullmatch(text).groups()  # pyright: ignore[reportOptionalMemberAccess, reportReturnType]
+
+    assert m("div") == ("div", "", None, "")
+    assert m("#foo") == (None, "", "#foo", "")
+    assert m("span.dark-red#_anchor.light.bold") == (
+        "span", ".dark-red", "#_anchor", ".light.bold",
+    )
+
+
+def test_id_and_classes_syntax():
+    assert doc(".nav") == doc('div class="nav"')
+    assert doc("#foo") == doc('div id="foo"')
+    assert doc('span.dark-red#_anchor.light.bold') == doc(
+        'span class="dark-red light bold" id="_anchor"'
+    )
+    assert doc('span.dark-red#_anchor.light.bold id="foo"') == doc(
+        'span class="dark-red light bold" id="foo"'
+    )
+    with pytest.raises(ValueError):
+        assert doc("div##bar")
+    with pytest.raises(ValueError):
+        assert doc("div,a,b")
+    with pytest.raises(ValueError):
+        assert doc("1div")
+    with pytest.raises(ValueError):
+        assert doc("#foo#bar")
