@@ -14,13 +14,18 @@ TAG: re.Pattern[Any] = re.compile(  # pyright: ignore[reportExplicitAny]
 )
 
 
+def _as_is(arg: Any, /) -> Markup:  # pyright: ignore[reportExplicitAny, reportAny]
+    return Markup(str(arg))  # pyright: ignore[reportAny]
+
+
 def _htmlize(node: cuddle.Node) -> htpy.Fragment:
-    if node.name == "_":
+    if node.name == "_" or node.name == "~":
         if node.children or node.properties:
             raise ValueError(
-                f"Text nodes cannot have children and/or properties: {node}",
+                f"Text/raw nodes cannot have children and/or properties: {node}",
             )
-        return htpy.fragment[(escape(arg) for arg in node.arguments)]  # pyright: ignore[reportAny]
+        wrap = _as_is if node.name == "~" else escape
+        return htpy.fragment[(wrap(arg) for arg in node.arguments)]  # pyright: ignore[reportAny]
     try:
         tag_name: str | None
         classes_before: str

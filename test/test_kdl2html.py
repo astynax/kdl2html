@@ -73,3 +73,7 @@ def test_id_and_classes_syntax():
         assert doc("1div")
     with pytest.raises(ValueError):
         assert doc("#foo#bar")
+
+
+def test_text_node_raw_arguments():
+    assert doc('~ "<br>"') == doc('br')
