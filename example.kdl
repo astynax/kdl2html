@@ -1,28 +1,28 @@
 html {
-  head {
-    title "Title"
-    style r#"
-      .red { color: red; }
-    "#
-  }
-  body {
-    h1.yellow "Heading"
-
-    #content {
-      span "Hello"
-      _ " World" "!"
+    head {
+        title "Title"
+        style r#"
+        .red { color: red; }
+        "#
     }
+    body {
+        h1.yellow "Heading"
 
-    form method="POST" {
-      label {
-        input type="checkbox" checked=true
-        _ "TODO"
-      }
-      button type="submit"
+        #content {
+            span "Hello"
+            _ " World" "!"
+        }
+
+        form method="POST" {
+            label {
+                input type="checkbox" checked=true
+                _ "TODO"
+            }
+            button type="submit"
+        }
+
+        script type="application/javascript" r#"
+        content.firstChild.classList.toggle("red");
+        "#
     }
-
-    script type="application/javascript" r#"
-      content.firstChild.classList.toggle("red");
-    "#
-  }
 }
