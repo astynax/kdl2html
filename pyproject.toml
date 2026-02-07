@@ -13,3 +13,8 @@ kdl2html = "kdl2html.__main__:main"
 
 [tool.uv]
 package = true
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.2",
+]
