@@ -19,7 +19,7 @@ def test_htmlize_doc_to_doc():
         c.Node("div", None, properties={"class": "red"}, children=[
             c.Node("_", None, arguments=["This"]),
             c.Node("span", None, arguments=["<span>"]),
-            c.Node("_", None, arguments=["is red"]),
+            c.Node("_", None, arguments=["is", " ", "red"]),
         ]),
     ]))))
 
@@ -38,3 +38,7 @@ div class="red" {
     _ "is" " " "red"
 }
 """)
+
+
+def test_text_node_argument_joining():
+    assert doc('_ "foo" "" "bar"') == doc('_ "foobar"')

@@ -13,8 +13,9 @@ def _htmlize(node: cuddle.Node) -> htpy.Fragment:
             )
         return htpy.fragment[(escape(arg) for arg in node.arguments)]  # pyright: ignore[reportAny]
     try:
-        tag: htpy.Element | htpy.VoidElement | Never
         tag = getattr(htpy, node.name)  # pyright: ignore[reportAny]
+        if not isinstance(tag, (htpy.Element, htpy.VoidElement)):
+            raise AttributeError()
     except AttributeError:
         raise ValueError(f"Unknown tag: {node.name}")
     else:
@@ -39,7 +40,7 @@ def _htmlize(node: cuddle.Node) -> htpy.Fragment:
                     )
                 return htpy.fragment[el[*args]]
             case _:
-                return htpy.fragment[el]
+                raise RuntimeError("Impossible")
 
 
 def htmlize(doc: cuddle.Document) -> htpy.Fragment:
