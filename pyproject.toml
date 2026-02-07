@@ -7,3 +7,9 @@ dependencies = [
     "cuddle",
     "htpy",
 ]
+
+[project.scripts]
+kdl2html = "kdl2html.__main__:main"
+
+[tool.uv]
+package = true
